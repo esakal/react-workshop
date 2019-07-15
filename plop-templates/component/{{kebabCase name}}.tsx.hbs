@@ -1,0 +1,18 @@
+import React, {Component} from 'react';
+import classes from './{{dashCase name}}.module.css';
+import classnames from 'classnames';
+
+export interface {{pascalCase name}}Props {
+    className?: string;
+}
+
+export class {{pascalCase name}} extends Component<{{pascalCase name}}Props> {
+    render() {
+       const { className } = this.props;
+        return (
+            <div className={classnames(className, classes.container)}>
+            </div>
+        );
+    }
+}
+

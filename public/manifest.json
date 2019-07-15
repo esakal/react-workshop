@@ -1,6 +1,6 @@
 {
-  "short_name": "kca",
-  "name": "Kaltura Chat application",
+  "short_name": "chat-app",
+  "name": "Chat application (React Workshop)",
   "icons": [
     {
       "src": "favicon.ico",

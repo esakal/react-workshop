@@ -1,1 +1,1 @@
-# Kaltura Chat App
+# Chat Application (React Workshop)

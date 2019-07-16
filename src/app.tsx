@@ -12,7 +12,9 @@ export interface AppState {
 export class App extends Component<AppProps, AppState> {
   render() {
       return (
-          <div />
+          <div>
+	          <div className={'caption'}>Chat Application</div> {/* Notice - please untouch this line */}
+          </div>
       );
   }
 }

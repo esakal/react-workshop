@@ -12,6 +12,7 @@ export interface AppState {
     error: boolean;
     fullName: string;
     connected: boolean;
+    message: string;
 }
 
 export class App extends Component<AppProps, AppState> {
@@ -21,7 +22,8 @@ export class App extends Component<AppProps, AppState> {
         loading: true,
         error: false,
         fullName: '',
-        connected: false
+        connected: false,
+        message: ''
     }
 
     componentDidMount(): void {
@@ -41,8 +43,25 @@ export class App extends Component<AppProps, AppState> {
             });
     }
 
+    handleMessageSend = () => {
+        const roomId = String(process.env.REACT_APP_CHATKIT_TEST_ROOM_ID);
+        // Note: in real application you should handle optimistic use case and error use case as well
+        this.chatkitService.sendMessage(roomId, this.state.message);
+        this.setState({
+            message: ''
+        });
+    }
+
+
+    handleChange = (e: any) => {
+        this.setState({
+            message: e.target.value
+        });
+    }
+
+
     render() {
-        const {loading, error, fullName, connected} = this.state;
+        const {loading, error, fullName, connected, message} = this.state;
         return (
             <div>
 	            <div className={classes.caption}>Chat Application</div> {/* Notice - please untouch this line */}
@@ -50,7 +69,7 @@ export class App extends Component<AppProps, AppState> {
                 {error && <div>Failed to connect...</div>}
                 { connected && <>
                     {fullName && <div>Hello {fullName}</div>}
-                    <MessageCreate />
+                    <MessageCreate value={message} onSend={this.handleMessageSend} onChange={this.handleChange} />
                 </>}
 
             </div>

@@ -13,7 +13,12 @@ export interface AppState {
     fullName: string;
     connected: boolean;
     message: string;
+    banUser: boolean;
 }
+
+const ForbiddenWord = 'coffee break';
+const LanguageFilterWords = ['badass', 'sexy', 'motherfucker'];
+const SafeWord = 'nice guy';
 
 export class App extends Component<AppProps, AppState> {
     private chatkitService: ChatkitService = new ChatkitService();
@@ -23,7 +28,8 @@ export class App extends Component<AppProps, AppState> {
         error: false,
         fullName: '',
         connected: false,
-        message: ''
+        message: '',
+        banUser: false
     }
 
     componentDidMount(): void {
@@ -54,14 +60,34 @@ export class App extends Component<AppProps, AppState> {
 
 
     handleChange = (e: any) => {
+        const message = e.target.value;
+
+
+        if (message.indexOf(ForbiddenWord) !== -1) {
+            this.setState({
+                message: 'No! Go back to work dude',
+                banUser: true
+            });
+            return;
+        }
+
+        // Notice: in real application you should compare it with case insensitive
+        const formattedMessage = message.split(' ').map((word: string) => {
+            if (LanguageFilterWords.includes(word)) {
+                return SafeWord;
+            }
+
+            return word;
+        }).join(' ');
+
         this.setState({
-            message: e.target.value
+            message: formattedMessage
         });
     }
 
 
     render() {
-        const {loading, error, fullName, connected, message} = this.state;
+        const {loading, error, fullName, banUser, connected, message} = this.state;
         return (
             <div>
 	            <div className={classes.caption}>Chat Application</div> {/* Notice - please untouch this line */}
@@ -69,7 +95,7 @@ export class App extends Component<AppProps, AppState> {
                 {error && <div>Failed to connect...</div>}
                 { connected && <>
                     {fullName && <div>Hello {fullName}</div>}
-                    <MessageCreate value={message} onSend={this.handleMessageSend} onChange={this.handleChange} />
+                    <MessageCreate disabled={banUser} value={message} onSend={this.handleMessageSend} onChange={this.handleChange} />
                 </>}
 
             </div>

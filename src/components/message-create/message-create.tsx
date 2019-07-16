@@ -5,6 +5,7 @@ export interface MessageCreateProps {
 	className?: string;
 	value: string;
 	onSend: () => void;
+	disabled: boolean
 	onChange: React.ChangeEventHandler<HTMLInputElement>; // Notice: this is for demonstration only. setting `(event: any) => void` instead is accepted with syntethic events
 }
 
@@ -13,7 +14,11 @@ export interface MessageCreateState {
 
 export class MessageCreate extends Component<MessageCreateProps, MessageCreateState> {
 
-	state = {}
+	static defaultProps = {
+		disabled: false
+	}
+
+	state = {};
 
 	handleKeyDown = (e: any) => {
 		const { onSend } = this.props;
@@ -24,11 +29,11 @@ export class MessageCreate extends Component<MessageCreateProps, MessageCreateSt
 	}
 
 	render() {
-		const { value, onChange } = this.props;
+		const { value, onChange, disabled } = this.props;
 		return (
 		<>
 			<div className={classes.caption}>Type your message here</div>
-			<input value={value} onChange={onChange} onKeyDown={this.handleKeyDown}/>
+			<input className={classes.input} disabled={disabled} value={value} onChange={onChange} onKeyDown={this.handleKeyDown}/>
 		</>);
 	}
 }

@@ -10,6 +10,19 @@ export interface ChannelListProps {
 }
 
 export const ChannelList = withChannelsService(class extends Component<ChannelListProps> {
+
+    private _autoRefreshToken: any = null;
+
+    componentDidMount() {
+        this._autoRefreshToken = setInterval(() => {
+            this._handleRefresh();
+        }, 10000);
+    }
+
+    componentDidUnmount() {
+        clearTimeout(this._autoRefreshToken);
+    }
+
     private _onChannelSelected = (channel: ChatChannel) => {
         this.props.channelsService.activateChannel(channel.id);
     }

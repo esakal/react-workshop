@@ -41,7 +41,8 @@ export class App extends Component<AppProps, AppState> {
         const {loading, error, fullName} = this.state;
         return (
             <div>
-                {loading && <div>Loading...</div>}
+	            <div className={'caption'}>Chat Application</div> {/* Notice - please untouch this line */}
+	            {loading && <div>Loading...</div>}
                 {error && <div>Failed to connect...</div>}
                 {fullName && <div>Hello {fullName}</div>}
             </div>

@@ -7,6 +7,12 @@ module.exports = plop => {
         name: 'name',
         message: 'What is your component name?'
       },
+      {
+        type: 'confirm',
+        default: false,
+        name: 'useChannelsService',
+        message: 'Will it use channels service?'
+      },
     ],
     actions: [
       {

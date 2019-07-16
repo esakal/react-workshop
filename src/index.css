@@ -1,5 +1,9 @@
 @import-normalize;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -21,4 +25,30 @@ code {
     monospace;
 }
 
+button {
+   border: none;
+   margin: 0;
+   padding: 0;
+   width: auto;
+   overflow: visible;
 
+   background: transparent;
+
+   /* inherit font & color from ancestor */
+   color: inherit;
+   font: inherit;
+
+   /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+   line-height: normal;
+
+   /* Corrects font smoothing for webkit */
+   -webkit-font-smoothing: inherit;
+   -moz-osx-font-smoothing: inherit;
+
+   /* Corrects inability to style clickable `input` types in iOS */
+   -webkit-appearance: none;
+
+  outline: none;
+  text-align: inherit;
+
+}

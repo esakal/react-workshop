@@ -11,6 +11,9 @@ export class ChannelCreate extends Component<ChannelCreateProps> {
        const { className } = this.props;
         return (
             <div className={classnames(classes.container, className)}>
+                <div className={classes.containerContent}>
+                    Create Channels
+                </div>
             </div>
         );
     }

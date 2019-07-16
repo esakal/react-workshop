@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.placeholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.textField {
+    margin: 5px;
+    height: auto;
+    width: 100%;
+    border: solid 1px rgba(61, 60, 64, 0.25);
+    border-radius: 4px;
+    color: rgb(61, 60, 64);
+    padding: 12px;
+    font-size: 14px;
+}

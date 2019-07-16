@@ -1,4 +1,19 @@
 .container {
     display: flex;
-    background: chartreuse;
+    background: rgb(17, 83, 171);
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.avatar {
+    margin-left: 10px;
+}
+
+.menu {
+    margin-right: 10px;
+    color: white;
+    width: 32px;
+    height: 32px;
+
 }

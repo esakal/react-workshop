@@ -1,12 +1,27 @@
 import React, {Component} from 'react';
 import classes from './{{dashCase name}}.module.css';
 import classnames from 'classnames';
+{{#if useChannelsService }}
+import { ChannelsService, withChannelsService } from '../channels-context';
+{{/if}}
 
 export interface {{pascalCase name}}Props {
     className?: string;
+{{#if useChannelsService }}
+    channelsService: ChannelsService;
+{{/if}}
 }
 
-export class {{pascalCase name}} extends Component<{{pascalCase name}}Props> {
+interface {{pascalCase name}}State {
+}
+
+{{#if useChannelsService }}
+export const {{pascalCase name}} = withChannelsService(class extends Component<{{pascalCase name}}Props, {{pascalCase name}}State> {
+{{else}}
+export class {{pascalCase name}} extends Component<{{pascalCase name}}Props, {{pascalCase name}}State> {
+{{/if}}
+    state: {{pascalCase name}}State = {}
+
     render() {
        const { className } = this.props;
         return (
@@ -14,5 +29,8 @@ export class {{pascalCase name}} extends Component<{{pascalCase name}}Props> {
             </div>
         );
     }
+{{#if useChannelsService }}
+});
+{{else}}
 }
-
+{{/if}}

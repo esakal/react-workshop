@@ -71,7 +71,7 @@ export class ChatkitService {
 						name: currentUser.name,
 						avatarURL: `https://github.com/${currentUser.id}.png?size=40`
 					},
-					rooms: currentUser.userRooms.map((room: any) => ({
+					rooms: currentUser.rooms.map((room: any) => ({
 						id: room.id,
 						name: room.name
 					}))

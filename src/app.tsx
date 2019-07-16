@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { ChatkitService } from './chatkit-service';
-import './app.css';
+import classes from './app.module.css';
 import { MessageCreate } from './components/message-create';
 
 export interface AppProps {
@@ -45,7 +45,7 @@ export class App extends Component<AppProps, AppState> {
         const {loading, error, fullName, connected} = this.state;
         return (
             <div>
-	            <div className={'caption'}>Chat Application</div> {/* Notice - please untouch this line */}
+	            <div className={classes.caption}>Chat Application</div> {/* Notice - please untouch this line */}
 	            {loading && <div>Loading...</div>}
                 {error && <div>Failed to connect...</div>}
                 { connected && <>

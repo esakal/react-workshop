@@ -11,23 +11,23 @@ export interface ChannelListProps {
 
 export const ChannelList = withChannelsService(class extends Component<ChannelListProps> {
     private _onChannelSelected = (channel: ChatChannel) => {
-        this.props.channelsService.activateRoom(channel.id);
+        this.props.channelsService.activateChannel(channel.id);
     }
 
     private _handleRefresh = () => {
-        this.props.channelsService.updateJoinableRooms();
+        this.props.channelsService.updateJoinableChannels();
     }
 
     render() {
         const {
             className,
-            channelsService: {joinableRooms, userRooms, activeChannel}
+            channelsService: {joinableChannels, userChannels, activeChannel}
         } = this.props;
 
         return (
             <div className={classnames(classes.container, className)}>
-                { userRooms && <ChannelSection onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'User Channels'} channels={userRooms}/> }
-                { joinableRooms && <ChannelSection showRefresh={true} onRefresh={this._handleRefresh} onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'Available Channels'} channels={joinableRooms}/> }
+                { userChannels && <ChannelSection onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'User Channels'} channels={userChannels}/> }
+                { joinableChannels && <ChannelSection showRefresh={true} onRefresh={this._handleRefresh} onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'Available Channels'} channels={joinableChannels}/> }
             </div>
         );
     }

@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
 
-export class App extends Component {
+export interface AppProps {
+
+}
+
+export interface AppState {
+
+}
+
+export class App extends Component<AppProps, AppState> {
   render() {
-    return (
-        <div>Hello Chat Application!</div>
-    );
+      return (
+          <div></div>
+      );
   }
 }
 

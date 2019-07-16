@@ -33,8 +33,10 @@ export interface ChannelsService {
 	activeChannelMessages: ChatMessage[],
 	activateRoom(roomId: string): void;
 	connect(): Promise<void>;
-	sendMessage(message: string): void
-	deleteMessage(messageId: string): void
+	sendMessage(message: string): void;
+	deleteMessage(messageId: string): void;
+	createChannel(name: string): void;
+	updateJoinableRooms(): void;
 }
 
 interface ChannelsProviderState {
@@ -59,7 +61,10 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 			connect: this.connect.bind(this),
 			activateRoom: this.activateRoom.bind(this),
 			sendMessage: this.sendMessage.bind(this),
-			deleteMessage: this.deleteMessage.bind(this)
+			deleteMessage: this.deleteMessage.bind(this),
+			createChannel: this.createARoom.bind(this),
+			updateJoinableRooms: this.updateJoinableRooms.bind(this)
+
 		}
 	}
 
@@ -86,26 +91,69 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 				onRoomUpdated: (room: ChatChannel) => {
 
 				},
-				onAddedToRoom: (room: ChatChannel) => {
+				onAddedToRoom: (room: any) => {
+					this.setState(prevState => {
+						const chatRoom = this._toChatChannel(room);
+						const userRooms = [...prevState.value.userRooms, chatRoom];
+						const joinableRooms = prevState.value.joinableRooms.filter(item => item.id !== chatRoom.id);
 
+						return {
+							...prevState,
+							value: {
+								...prevState.value,
+								userRooms,
+								joinableRooms
+							}
+						}
+					})
 				},
-				onRemovedFromRoom: (room: ChatChannel) => {
+				onRemovedFromRoom: (room: any) => {
+					this.setState(prevState => {
+						const chatRoom = this._toChatChannel(room);
+						const userRooms = prevState.value.userRooms.filter(item => item.id !== chatRoom.id);
+						const joinableRooms = [...prevState.value.joinableRooms, chatRoom];
+						const isRemovedFromActive = prevState.value.activeChannel && prevState.value.activeChannel.id === chatRoom.id;
 
+
+						return {
+							...prevState,
+							value: {
+								...prevState.value,
+								userRooms,
+								joinableRooms,
+								activeChannel: isRemovedFromActive ? null : prevState.value.activeChannel,
+								activeChannelMessages: isRemovedFromActive ? [] : prevState.value.activeChannelMessages,
+							}
+						}
+					})
 				},
-				onRoomDeleted: (room: ChatChannel) => {
+				onRoomDeleted: (room: any) => {
+					this.setState(prevState => {
+						const chatRoom = this._toChatChannel(room);
+						const userRooms = prevState.value.userRooms.filter(item => item.id !== chatRoom.id);
+						const joinableRooms = prevState.value.joinableRooms.filter(item => item.id !== chatRoom.id);
+						const isActiveChannelDeleted = prevState.value.activeChannel && prevState.value.activeChannel.id === chatRoom.id;
 
+						return {
+							...prevState,
+							value: {
+								...prevState.value,
+								userRooms,
+								joinableRooms,
+								activeChannel: isActiveChannelDeleted ? null : prevState.value.activeChannel,
+								activeChannelMessages: isActiveChannelDeleted ? [] : prevState.value.activeChannelMessages,
+							}
+						}
+					})
 				},
 			})
 			.then((currentUser: any) => {
 				log('info', 'connect', 'user connected', { currentUser });
 				this._currentUser = currentUser;
 
-				const userRooms = currentUser.rooms.map((room: any) => ({
-					id: room.id,
-					name: room.name
-				}));
+				const userRooms = currentUser.rooms.map(this._toChatChannel);
 
-				const user = this._toChatUser(currentUser)
+				const user = this._toChatUser(currentUser);
 
 				return this._getJoinableRooms()
 					.then(joinableRooms => {
@@ -114,7 +162,7 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 								...prev.value,
 								user,
 								userRooms,
-								joinableRooms
+								joinableRooms: joinableRooms.map(this._toChatChannel)
 							}
 						}));
 
@@ -130,24 +178,46 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 
 	activateRoom(roomId: string): void {
 		this.invariantConnected();
+		const isJoined = this.state.value.userRooms.some(room => room.id === roomId);
 
-		this.setState(prevState => {
+		log('info', 'activateRoom', 'user request to activate room', {roomId, isJoined});
 
-			const userRoom = prevState.value.userRooms.find(room => room.id === roomId);
-			const joinableRoom = prevState.value.joinableRooms.find(room => room.id === roomId);
+		let verify = Promise.resolve();
 
-			if (!userRoom && !joinableRoom) {
-				return prevState;
-			}
+		if (!isJoined) {
+			verify = this._currentUser.joinRoom({roomId})
+				.then(() => {
+					log('info', 'activateRoom', 'user joined room', {roomId});
+				})
+				.catch((error: any) => {
+					log('error', 'activateRoom', 'failed to join room', {error});
 
-			return {
-				value: {
-					...prevState.value,
-					activeChannel: userRoom || joinableRoom || null,
-					activeChannelMessages: []
+					if (error.info.error === "services/chatkit/not_found/room_not_found") {
+						this.updateJoinableRooms();
+					}
+					throw error;
+				});
+		}
+
+		verify.then(() => {
+			this.setState(prevState => {
+
+				const userRoom = prevState.value.userRooms.find(room => room.id === roomId);
+				const joinableRoom = prevState.value.joinableRooms.find(room => room.id === roomId);
+
+				if (!userRoom && !joinableRoom) {
+					return prevState;
 				}
-			}
-		}, this._subscribeToActiveChannel);
+
+				return {
+					value: {
+						...prevState.value,
+						activeChannel: userRoom || joinableRoom || null,
+						activeChannelMessages: []
+					}
+				}
+			}, this._subscribeToActiveChannel);
+		});
 	}
 
 	private _subscribeToActiveChannel = () => {
@@ -222,6 +292,12 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 			});
 	}
 
+	private _toChatChannel(room: any): ChatChannel {
+		return {
+			id: room.id,
+			name: room.name
+		}
+	}
 	private _toChatUser(user: any): ChatUser {
 		return {
 			id: user.id,
@@ -273,6 +349,40 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 			})
 	}
 
+	createARoom(roomName: string): Promise<void> {
+		this.invariantConnected();
+		log('info', 'createARoom', 'user request to create a new room', { roomName });
+
+		return this._currentUser.createRoom({
+			name: roomName,
+			private: false,
+		}).then((room: any) => {
+			const chatRoom = this._toChatChannel(room);
+			log('info', 'createARoom', 'room created', { roomId: room.id, roomName });
+			this.setState({
+				value: {
+					...this.state.value,
+					activeChannel:chatRoom,
+					activeChannelMessages: []
+				}
+			})
+		})
+			.catch((error: Error) => {
+				log('error', 'createARoom', 'failed to create a room', { error });
+				throw error;
+			})
+	}
+
+	updateJoinableRooms() {
+		this._getJoinableRooms()
+			.then((joinableRooms) => {
+				this.setState({
+					value: {
+						...this.state.value,
+						joinableRooms
+				}})
+			})
+	}
 	private _getJoinableRooms(): Promise<ChatChannel[]> {
 		this.invariantConnected();
 		log('info', 'getJoinableRooms', 'user request to get joinable room list', {});
@@ -288,6 +398,7 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 	}
 
 	deleteMessage(messageId: string) {
+		this.invariantConnected();
 
 		if (!this.state.value.activeChannel) {
 			return;
@@ -309,17 +420,27 @@ export class ChannelsProvider extends Component<ChannelsProviderProps, ChannelsP
 				throw error;
 			})
 	}
-	sendMessage(message: string) {
+	sendMessage(message: string): Promise<void> {
 		this.invariantConnected();
 
 		if (!this.state.value.activeChannel) {
-			return;
+			return Promise.reject(new Error('failed to find active channel'));
 		}
 
-		this._currentUser.sendSimpleMessage({
+		const roomId = this.state.value.activeChannel.id;
+		log('info', 'sendMessage', 'user request to send a message', { roomId, message });
+
+
+		return this._currentUser.sendSimpleMessage({
 			text: message,
-			roomId: this.state.value.activeChannel.id
-		});
+			roomId
+		}).then(() => {
+			log('info', 'sendMessage', 'message sent', { roomId, message });
+		})
+			.catch((error: Error) => {
+				log('error', 'sendMessage', 'failed to send a message', { error });
+				throw error;
+			})
 	}
 
 	private invariantConnected(): void {

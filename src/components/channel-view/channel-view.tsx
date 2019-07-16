@@ -4,20 +4,33 @@ import { MessageCreate } from '../message-create';
 import { ChannelMessages } from '../channel-messages';
 import { ChannelHeader } from '../channel-header';
 import classnames from 'classnames';
+import { ChannelsService, withChannelsService } from '../channels-context';
+import { ReactComponent as EmptyImage} from './empty.svg';
 
 export interface ChannelViewProps {
     className?: string
+    channelsService: ChannelsService;
+
 }
 
-export class ChannelView extends Component<ChannelViewProps> {
+export const ChannelView  = withChannelsService(class extends Component<ChannelViewProps> {
     render() {
-        const { className } = this.props;
+        const { className, channelsService: {activeChannel} } = this.props;
         return (
             <div className={classnames(classes.container, className)}>
 	            <ChannelHeader className={classes.channelHeader} />
-                <ChannelMessages className={classes.channelMessages} />
+	            <div className={classes.content}>
+                {activeChannel ?
+                    <ChannelMessages/>
+                    :
+                    <div className={classes.emptyContainer}>
+                        <EmptyImage className={classes.emptyImage} />
+                        <div className={classes.emptyText}>Select channel from the sidebar</div>
+                    </div>
+                }
+                </div>
                 <MessageCreate className={classes.messageCreate} />
             </div>
         );
     }
-}
+});

@@ -6,7 +6,7 @@ import { Toolbar } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import EditIcon from '@material-ui/icons/Edit';
-import IconButton from '@material-ui/core/IconButton';
+
 
 export interface ChannelHeaderProps {
     className?: string;

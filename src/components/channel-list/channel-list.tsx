@@ -14,6 +14,10 @@ export const ChannelList = withChannelsService(class extends Component<ChannelLi
         this.props.channelsService.activateRoom(channel.id);
     }
 
+    private _handleRefresh = () => {
+        this.props.channelsService.updateJoinableRooms();
+    }
+
     render() {
         const {
             className,
@@ -23,7 +27,7 @@ export const ChannelList = withChannelsService(class extends Component<ChannelLi
         return (
             <div className={classnames(classes.container, className)}>
                 { userRooms && <ChannelSection onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'User Channels'} channels={userRooms}/> }
-                { joinableRooms && <ChannelSection onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'Available Channels'} channels={joinableRooms}/> }
+                { joinableRooms && <ChannelSection showRefresh={true} onRefresh={this._handleRefresh} onChannelSelected={this._onChannelSelected} activeChannel={activeChannel} title={'Available Channels'} channels={joinableRooms}/> }
             </div>
         );
     }

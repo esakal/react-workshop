@@ -39,3 +39,9 @@
     flex: 1;
     overflow: auto;
 }
+
+.refreshButton {
+    line-height: 20;
+    vertical-align: middle;
+    margin-left: 10px;
+}

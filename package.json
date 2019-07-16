@@ -15,8 +15,7 @@
   "scripts": {
     "serve": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "generate": "plop"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

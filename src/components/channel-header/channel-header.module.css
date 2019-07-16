@@ -1,0 +1,5 @@
+.container {
+    display: flex;
+    background: bisque;
+    border-color: rgba(61, 60, 64, 0.2);
+}

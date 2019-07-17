@@ -164,7 +164,7 @@ export class ChatkitService {
 			})
 	}
 
-	sendMessage(roomId: number, message: string) {
+	sendMessage(roomId: string, message: string) {
 		this.invariantConnected();
 
 		this._currentUser.sendSimpleMessage({

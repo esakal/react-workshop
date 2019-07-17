@@ -68,6 +68,23 @@ This ticket provides less guidance to level up the challange. Ping me if you nee
 - [ ] when user types 'lo tzarich tovot', make `App` to disconnect (which will cause `MessageCreate` to be unmounted).
 - [ ] make sure the writes to console log stops as `MessageCreate` is not there anymore.
 
+### Ticket Novice-3.5 (state manipulations)
+> You can continue your work or checkout and continue with branch [novice-3.5](https://github.com/esakal/react-workshop/tree/novice-3.5)
+
+- [ ] extends `App` state with 
+```
+bookmarks: {
+            lists: {id: string, value: string}[],
+            ownerId: string
+     }
+```
+- [ ] upon mounting - update ownerId with  
+- [ ] when user types `show bookmarks` - print all boomkarks to console
+- [ ] when user types `add bookmark {something somthing}!` - add new bookmark. generate id using npm librari `short` library. don't forget to add types as well by consuming `@types/shortid`
+- [ ] make sure adding to array doesn't delete value of `ownerId` without re-setting is manually. Search for the functional programming technique **without** adding 3rd party libraries
+- [ ] when user types `remove bookmark XXX!` - remove bookmark with id XXX if exists and print to console new bookmarks
+- [ ] when use types `modify`
+
 
 ## Epic Highlights  
 - component state

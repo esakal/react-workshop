@@ -26,7 +26,13 @@ export interface ChannelMessagesProps {
 export const ChannelMessages = withChannelsService(class extends Component<ChannelMessagesProps> {
 
     renderMessages() {
-        return null; // TODO complete logic here
+        const { channelsService: { activeChannelMessages}} = this.props;
+
+        return activeChannelMessages.map(message => {
+            return (
+                <ChannelMessage onDelete={this.onDelete} key={message.id} message={message} />
+            )
+        })
     }
 
     onDelete = (message: ChatMessage) => {

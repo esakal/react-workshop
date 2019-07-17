@@ -52,7 +52,9 @@ src
 > You can continue your work or checkout and continue with branch [novice-3.3](https://github.com/esakal/react-workshop/tree/novice-3.3)
 
 - [ ] move `value` from `MessageCreate` state into `App` state
-- [ ] extend `MessageCreate` props, add `onChange` and `onSend` events
+- [ ] extend `MessageCreate` props, add `onChange` and `onSend` events.
+	- `onChange` is a 'proxy event' and should have the same signature of the originator. In our case `(e: any) => void`. 
+	- `onSend` abstract the logic of `onKeyUp` and can expose a more relevant signature `() => void`
 - [ ] adjust code so a user can type value and print it to console when pressing enter. It should behave the same while the value should be managed in `App` component.
 - [ ] instead of writing to console use `ChatkitService` method `sendMessage` to send the message to the server. Ask for the roomId from the presenter.
 - [ ] expose *optional* `disabled` prop in `MessageCreate` that if set disable user typing. default to not disabled.

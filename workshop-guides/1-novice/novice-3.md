@@ -1,12 +1,10 @@
-# React workshop - Epic Novice-3
+# React workshop - Unit Novice-3
 
 ## Overview
-This epic covers basic yet important behaviors of components. Let's start playing with React :)
+This unit covers practical use-cases with components. Let's start playing with React :)
 
-Enjoy! 
-
-## Epic Tickets
-> NOTICE: before you start working, please checkout  [novice-3](https://github.com/esakal/react-workshop/tree/novice-3) and use it to develop this epic tasks
+## Unit Tickets
+> NOTICE: before you start working, please checkout branch [novice-3](https://github.com/esakal/react-workshop/tree/novice-3) and use it to develop this unit tasks
 
 ### Ticket Novice-3 (conditional rendering)
 - [ ] create file `.env` based on content of `.env.template`, ask the keys from the presenter..
@@ -16,6 +14,8 @@ Enjoy!
   - [ ] connect to ChatKit using `./src/chatkit-service.ts` class `ChatkitService` method `connect`
 - [ ] if connection failed, replace loading with message `Failed to connect...`
 - [ ] if connected, replace loading message with `Hello {your name}!`
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/3)
 
 ### Ticket Novice-3.1 (create component)
 > You can continue your work or checkout and continue with branch [novice-3.1](https://github.com/esakal/react-workshop/tree/novice-3.1)
@@ -40,6 +40,8 @@ src
 - [ ] show `MessageCreate` component in `app.tsx` only if user is connected
 - [ ] use the `caption` class name in `MessageCreate` to change the div style to `font-size: 12px; background: purple;`
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/4)
+
 ### Ticket Novice-3.2 (css modules & controlled components)
 > You can continue your work or checkout and continue with branch [novice-3.2](https://github.com/esakal/react-workshop/tree/novice-3.2)
 
@@ -49,6 +51,8 @@ src
 - [ ] add `onChange` react event to the `input` component.
 - [ ] add a method to handle that event, when called it should update the value of the state. Use [the article](https://reactjs.org/docs/forms.html) as a reference.
 - [ ] add second event `onKeyUp` and a matching method to handle it. use event args `e.which === 13` to detect pressing `enter` and write the value to console.
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/5)
 
 ### Ticket Novice-3.3 (lifting state up)
 > You can continue your work or checkout and continue with branch [novice-3.3](https://github.com/esakal/react-workshop/tree/novice-3.3)
@@ -64,6 +68,8 @@ src
 - [ ] add 'swear filter' that replaces any of the following words ('[badass](https://www.urbandictionary.com/define.php?term=Badass)', 'sexy', 'motherfucker') with 'nice guy'
 - [ ] add 'antisocial filter' that disable the input if the user types the phrase 'coffee break' [useful link](https://www.slashgear.com/how-many-daily-cups-of-coffee-are-safe-study-offers-surprising-answer-10576199/)
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/6)
+
 ### Ticket Novice-3.4 (component life cycle events) - Bonus!
 > You can continue your work or checkout and continue with branch [novice-3.4](https://github.com/esakal/react-workshop/tree/novice-3.4)
 
@@ -72,6 +78,8 @@ This ticket provides less guidance to level up the challange. Ping me if you nee
 - [ ] when user types 'i need your help', make `MessageCreate` to write to console 'Sorry, I'm very busy...' every 1 second eternally. [useful link](https://www.quora.com/Why-do-some-people-pretend-to-be-busy-and-occupied)
 - [ ] when user types 'lo tzarich tovot', make `App` to disconnect (which will cause `MessageCreate` to be unmounted).
 - [ ] make sure the writes to console log stops as `MessageCreate` is not there anymore.
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/7)
 
 ### Ticket Novice-3.5 (state manipulations)
 > You can continue your work or checkout and continue with branch [novice-3.5](https://github.com/esakal/react-workshop/tree/novice-3.5)
@@ -90,8 +98,9 @@ bookmarks: {
 - [ ] when user types `remove bookmark XXX!` - remove bookmark with id XXX if exists and print to console new bookmarks
 - [ ] when use types `modify bookmark {id} {new value}!` - modify value if id exists
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/20)
 
-## Epic Highlights  
+## Unit Highlights  
 - component state
 - component typescript support for props & state
 - workaround for state issue with typescript
@@ -106,7 +115,7 @@ bookmarks: {
 - component life cycle events (componentDidMount, componentWillUnmount, componentDidUpdate)
 
 
-## Epic References
+## Unit References
 - [css resets](http://facebook.github.io/create-react-app/docs/adding-css-reset)
 - [Adding a CSS Modules Stylesheet in CRA](https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet)
 - [React synthetic events](https://reactjs.org/docs/events.html)

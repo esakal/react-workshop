@@ -1,7 +1,7 @@
-# React workshop - Epic Novice-2
+# React workshop - Unit Novice-2
 
 ## Overview
-This epic covers product and technical requirements as well as some architecture and design decisions
+This unit covers product and technical requirements as well as some architecture and design decisions
 
 Enjoy!
 
@@ -12,7 +12,7 @@ During this workshop we will create a chat application. We will focus on the fro
 
 The product provided us his requirements for the POC. 
 
-## Epic Tickets
+## Unit Tickets
 
 ### Ticket Novice-2 
 - [ ] read the following information about this product
@@ -52,7 +52,7 @@ The product provided us his requirements for the POC.
 6. **releasing resources when unmounting**. It is important to always cleanup resources when unmounting but it usually requires some advanced techniques to overcome things like Promise that is not cancellable. There are common techniques that should be followed and we will discuss about it a bit but will not elaborate about it during this workshop.
 
 ### Ticket Novice-2.1
-- [x] decide about project structure. actually it was already decided, keep reading.
+This task introduce a very simple code convention. for this workshop. As there are many code conventions used in React project, you should always look for file `CONTRIBUTING.md` in the repository root folder to learn about its convention. 
 
 1. all components should exists under `src/components`
 2. each component should have its' own folder. using kebab-case for file names

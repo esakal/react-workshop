@@ -1,18 +1,18 @@
-# React workshop - Epic Intermediate-2
+# React workshop - Unit Intermediate-2
 
 ## Overview
-This epic cover some more advanced techniques
+This unit cover some more advanced techniques
 
-Enjoy! 
-
-## Epic Tickets
-> In this epic they layout components were modified to gain access to channels-context. this is a simple yet efficiant way to introduce state management into the application. As mentioned earlier we will not cover state management in this workshop. 
+## Unit Tickets
+> In this unit the layout components were refactored to include the actual look&feel and also to gain access to dedicated context used as state management. As mentioned earlier we will not discuss about the implementation of the state management as it will be covered in the following course.
 >
-> IMPORTANT: during this epic development you should not change component type, if a component is wrapped with High order component (HOC) it means that it has access to the context, all other component should be treated as dump components.  
+> IMPORTANT: This unit introduce two types of components, smart and dump components. You are adviced not to change the type of the components. if a component is wrapped with High order component (HOC) it means that it has access to the context, all other component should be treated as dump components.  
 
-> NOTICE: before you start working, please checkout  [intermediate-2](https://github.com/esakal/react-workshop/tree/intermediate-2) and use it to develop this epic tasks
+> NOTICE: before you start working, please checkout branch [intermediate-2](https://github.com/esakal/react-workshop/tree/intermediate-2) and use it to develop this unit tasks
 
 ### Ticket Intermediate-2 (introduce channels context)
+> This task is not personal and should be completed together during a joined session with the presenter.
+
 - [x] review together changes done in plop templates and in many app components to consume channels context
 
 ### Ticket Intermediate-2.1 (user profile)
@@ -21,6 +21,8 @@ Enjoy!
 > This ticket modifies `UserProfile` component
 
 - [ ] show your avatar using `ChannelsService.user` and `@material-ui/core/Avatar`
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/13)
 
 ### Ticket Intermediate-2.2 (channels list)
 > You can continue your work or checkout and continue with branch [intermediate-2.2](https://github.com/esakal/react-workshop/tree/intermediate-2.2)
@@ -34,6 +36,8 @@ Enjoy!
 - [ ] (bonus) check automatically for updates every 10 seconds 
 - [ ] clicking on a channel should activate it using relevant api in `ChannelsService`
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/14)
+
 ### Ticket Intermediate-2.3 (active channel view)
 > You can continue your work or checkout and continue with branch [intermediate-2.3](https://github.com/esakal/react-workshop/tree/intermediate-2.3)
 
@@ -43,6 +47,8 @@ Enjoy!
 - [ ] in `ChannelView` show `ChannelMessages` and `MessageCreate` if has active channel.
 - [ ] in `ChannelMessages` fill `renderMessages` to render all messages with `ChannelMessage`
 - [ ] in `ChannelMessage` use `moment` api support to show time **from now**. see [moment documentation](https://momentjs.com/docs/)
+ 
+ Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/15)
  
 ### Ticket Intermediate-2.4 (channel header)
 > You can continue your work or checkout and continue with branch [intermediate-2.4](https://github.com/esakal/react-workshop/tree/intermediate-2.4)
@@ -54,6 +60,8 @@ Enjoy!
 - [ ] show the edit name button **only** on hover (onMouseEnter, onMouseLeave)
   - the edit logic will be handled in another ticket
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/16)
+
 ### Ticket Intermediate-2.5 (create channel)
 > You can continue your work or checkout and continue with branch [intermediate-2.5](https://github.com/esakal/react-workshop/tree/intermediate-2.5)
 
@@ -63,6 +71,8 @@ Enjoy!
 - [ ] discard changes if modal closed
 - [ ] create channel if modal approved
   - use `_newChannelInputRef` to get the value from the modal input
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/17)
 
 ### Ticket Intermediate-2.6 (sort channel list)
 > You can continue your work or checkout and continue with branch [intermediate-2.6](https://github.com/esakal/react-workshop/tree/intermediate-2.6)
@@ -76,11 +86,8 @@ Enjoy!
 
 - [ ] open material-ui modal when clicking on channel name and use relevant api in `ChannelsService` to change name in server.  
 
-## Epic Highlights  
+## Unit Highlights  
 - uncontrolled component
 - material-ui modal
 - onMouseLeave / onMouseEnter
 - smart/dump components
-
-
-## Epic References

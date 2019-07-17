@@ -1,12 +1,9 @@
-# React workshop - Epic Novice-1
+# React workshop - Unit Novice-1
 
 ## Overview
-This epic covers creation of project using [Create React App project](https://github.com/facebook/react/) (a.k.a CRA). This library exists to "Get Started Immediately", "Create React apps with no build configuration”. click here to read more about their [pilosophy](https://github.com/facebook/create-react-app#philosophy)
+This unit covers creation of project using [Create React App project](https://github.com/facebook/react/) (a.k.a CRA). This library exists to "Get Started Immediately", "Create React apps with no build configuration”. click here to read more about their [pilosophy](https://github.com/facebook/create-react-app#philosophy)
 
-
-Enjoy!
-
-## Epic Tickets
+## Unit Tickets
 
 ### Ticket Novice-1 (scaffold a project using CRA)
 - [ ] create a new react application. choose `npm` as dependency manager and `typescript` as project language
@@ -15,6 +12,8 @@ npx create-react-app my-app --typescript —use-npm
 ```
 - [ ] run the project and make sure it works
 - [ ] replace the logo implementation with [svg as component](https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files#adding-svgs)
+
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/19)
 
 ### Ticket Novice-1.1 (remove irrelevant parts)
 > You can continue your work or checkout and continue with branch [novice-1.1](https://github.com/esakal/react-workshop/tree/novice-1.1)
@@ -43,6 +42,8 @@ height: 100vh;
 - [ ] in `.gitignore` add `.env`. also add such a file under root
 - [ ] unless you plan to actually write tests, remove any `test` files under `src`
 
+Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/18)
+
 ## Why to use CRA?
 - Developments process
 	- flexible project scaffolding. Decide between npm/yarn and javascript/typescript.
@@ -64,10 +65,10 @@ height: 100vh;
 When creating a library. You can find tutorials that guide you how to twick CRA but at the end you should consider choosing more suitable project.
 
 
-## Epic Highlights  
+## Unit Highlights  
 - create new application with: react, typescript, npm, jest
 - considerations to use CRA. limitations with CRA
 - SVG as component
 
 
-## Epic References
+## Unit References

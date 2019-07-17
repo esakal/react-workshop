@@ -4,6 +4,29 @@ This is a two days workshop, during which we will learn create a chat applicatio
 
 ![chat app](./workshop-guides/images/react-workshop-app-1.jpg)
 
+# Setup the workshop application
+Do the following if you wish to run the workshop application.
+
+1. checkout branch [workshop-application](https://github.com/esakal/react-workshop/tree/workshop-application).
+2. re-download dependencies:
+```
+rm -rf node_modules
+npm install
+```
+3. create a developer 30 days trial account in [pusher chatkit](https://pusher.com/chatkit)
+4. once logged in, create an instance of chatkit application
+5. in pusher dashboard access the new instance and navigate to `credentials` section. 
+6. copy `.env.template` file into `.env`
+  - set `REACT_APP_CHATKIT_TOKEN_PROVIDER` and `REACT_APP_CHATKIT_INSTANCE_LOCATOR` with values from the pusher `credentials` section.
+  - set `REACT_APP_USER_ID` with your github user id (not email)
+  - NOTE that everytime you change values in `.env` file you must run `serve` again, they are not being tracked by CRA.
+7. open the `console` section in pusher dashboard and create new room.
+7. go over to users and add new user with your github user id. make sure that user is joined to the room you created.
+8. add all the workshop participant github user id (not email) as users to chatkit, make sure that user is joined to the room you created (you can skip it for now and do it later)
+9. run the application `npm run serve`, navigate to `http://localhost:3000` to open the application.
+
+That's it, you are ready to guide the workshop.
+
 # About this workshop
 This workshop was created as a preparation to a course about React hooks, state managements (using context), routing and some other advanced techniques. [Unit 'Novice-2'] elaborate about whats' included in this workshop. Keep in mind that we aim to use hooks where possible, this workshop was created to provide essential information prior to the course.
 
@@ -29,4 +52,5 @@ This workshop is divided into small units and each unit is divided into tasks.
 - **Unit 'Intermediate-1' ([link to unit instructions](./workshop-guides/2-intermediate/intermediate-1.md))**: This unit deals with techniques to break any application into components using flexbox as our layout system.
 
 - **Unit 'Intermediate-2' ([link to unit instructions](./workshop-guides/2-intermediate/intermediate-2.md))**: This unit deals with techniques to break any application into components using flexbox as our layout system.
+
 

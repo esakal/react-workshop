@@ -14,6 +14,10 @@ export interface AppState {
     connected: boolean;
     message: string;
     banUser: boolean;
+    bookmarks: {
+            lists: {id: string, value: string}[],
+            owner: string
+     }
 }
 
 const ForbiddenWord = 'coffee break';
@@ -30,7 +34,8 @@ export class App extends Component<AppProps, AppState> {
         fullName: '',
         connected: false,
         message: '',
-        banUser: false
+        banUser: false,
+        bookmarks: []
     }
 
     componentDidMount(): void {

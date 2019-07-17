@@ -13,25 +13,46 @@ export interface ChannelCreateProps {
 }
 
 export interface ChannelCreateState {
+    open: boolean
 }
 
 export const ChannelCreate = withChannelsService(class extends Component<ChannelCreateProps, ChannelCreateState> {
     private _newChannelInputRef = React.createRef<HTMLInputElement>();
     state: ChannelCreateState ={
+        open: false
     }
 
     handleOpen = () => {
+        this.setState({
+            open: true
+        });
     }
 
     handleClose = () => {
+        this.setState({
+            open: false
+        });
     }
 
     handleCreate = () => {
+        if (!this._newChannelInputRef.current) {
+            return;
+        }
+
+        const name = (this._newChannelInputRef.current.value || '').trim();
+
+        if (!name) {
+            this.handleClose();
+            return;
+        }
+
+        this.props.channelsService.createChannel(name);
+        this.handleClose();
     }
 
     render() {
        const { className } = this.props;
-       const open = false; // TODO replace with relevant implementation
+       const { open } = this.state;
         return (
             <>
             <div className={classnames(classes.container, className)}>

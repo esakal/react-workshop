@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { ChatkitService } from './chatkit-service';
 import classes from './app.module.css';
 import { MessageCreate } from './components/message-create';
+import shortid from 'shortid';
 
 export interface AppProps {
 
@@ -15,15 +16,20 @@ export interface AppState {
     message: string;
     banUser: boolean;
     bookmarks: {
-            lists: {id: string, value: string}[],
-            owner: string
-     }
+        list: { id: string, value: string }[],
+        ownerIdType: string
+    }
 }
 
 const ForbiddenWord = 'coffee break';
 const LanguageFilterWords = ['badass', 'sexy', 'motherfucker'];
 const SafeWord = 'nice guy';
 const DisconnectWord = 'lo tzarich tovot';
+const AddToBookmarkRegex = /add bookmark (.*?)[!]/
+const RemoveToBookmarkRegex = /remove bookmark (.*?)[!]/
+const ModifyBookmarkRegex = /modify bookmark (.*?) (.*?)[!]/
+const ShowBookmarks = 'show bookmarks';
+
 
 export class App extends Component<AppProps, AppState> {
     private chatkitService: ChatkitService = new ChatkitService();
@@ -35,7 +41,10 @@ export class App extends Component<AppProps, AppState> {
         connected: false,
         message: '',
         banUser: false,
-        bookmarks: []
+        bookmarks: {
+        	list: [],
+	        ownerIdType: 'user'
+        }
     }
 
     componentDidMount(): void {
@@ -64,9 +73,79 @@ export class App extends Component<AppProps, AppState> {
         });
     }
 
+    _printBookmarks = () => {
+        console.log(`bookmarks of owner id type ${this.state.bookmarks.ownerIdType}:`);
+        this.state.bookmarks.list.forEach(bookmark =>{
+            console.log(`${bookmark.id} ${bookmark.value}`);
+        });
+    }
 
     handleChange = (e: any) => {
         const message = e.target.value;
+
+        if (message === ShowBookmarks) {
+            this._printBookmarks();
+            this.setState({
+                message: ''
+            });
+            return;
+        }
+
+        if (AddToBookmarkRegex.test(message)) {
+            const value = message.match(AddToBookmarkRegex)[1];
+            const id = shortid();
+            this.setState(prevState => ({
+                ...prevState,
+                message: '',
+                bookmarks: {
+                    ...prevState.bookmarks,
+                    list: [
+                        ...prevState.bookmarks.list,
+                        {id , value}
+                    ]
+                }
+            }), () => {
+                this._printBookmarks();
+            });
+            return;
+        }
+
+        if (ModifyBookmarkRegex.test(message)) {
+            const [,id, value] = message.match(ModifyBookmarkRegex);
+
+            this.setState(prevState => ({
+                ...prevState,
+                message: '',
+                bookmarks: {
+                    ...prevState.bookmarks,
+                    list: prevState.bookmarks.list.map(bookmark => {
+                        if (bookmark.id !== id) {
+                            return bookmark;
+                        }
+
+                        return { id, value }
+                    })
+                }
+            }), () => {
+                this._printBookmarks();
+            });
+            return;
+        }
+
+        if (RemoveToBookmarkRegex.test(message)) {
+            const id = message.match(RemoveToBookmarkRegex)[1];
+            this.setState(prevState => ({
+                ...prevState,
+                message: '',
+                bookmarks: {
+                    ...prevState.bookmarks,
+                    list: prevState.bookmarks.list.filter(bookmark => bookmark.id !== id)
+                }
+            }), () => {
+                this._printBookmarks();
+            });
+            return;
+        }
 
         if (message === DisconnectWord) {
             this.setState({

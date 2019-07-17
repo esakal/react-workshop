@@ -14,6 +14,7 @@ Enjoy!
 npx create-react-app my-app --typescript —use-npm
 ```
 - [ ] run the project and make sure it works
+- [ ] replace the logo implementation with [svg as component](https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files#adding-svgs)
 
 ### Ticket Novice-1.1 (remove irrelevant parts)
 > You can continue your work or checkout and continue with branch [novice-1.1](https://github.com/esakal/react-workshop/tree/novice-1.1)
@@ -66,6 +67,7 @@ When creating a library. You can find tutorials that guide you how to twick CRA 
 ## Epic Highlights  
 - create new application with: react, typescript, npm, jest
 - considerations to use CRA. limitations with CRA
+- SVG as component
 
 
 ## Epic References

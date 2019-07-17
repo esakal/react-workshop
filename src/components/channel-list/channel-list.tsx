@@ -9,34 +9,32 @@ export interface ChannelListProps {
     channelsService: ChannelsService;
 }
 
-const userChannels: ChatChannel[] = [
-    {id: '1', name: 'channel 1'},
-    {id: '2', name: 'channel 2'},
-]
-
-const joinableChannels: ChatChannel[] = [];
-
 export const ChannelList = withChannelsService(class extends Component<ChannelListProps> {
 
     private _autoRefreshToken: any = null;
 
     componentDidMount() {
+        this._autoRefreshToken = setInterval(() => {
+            this._handleRefresh();
+        }, 10000);
     }
 
     componentDidUnmount() {
+        clearTimeout(this._autoRefreshToken);
     }
 
     private _onChannelSelected = (channel: ChatChannel) => {
+        this.props.channelsService.activateChannel(channel.id);
     }
 
     private _handleRefresh = () => {
-        // this.props.channelsService.updateJoinableChannels();
+        this.props.channelsService.updateJoinableChannels();
     }
 
     render() {
         const {
             className,
-            channelsService: {activeChannel}
+            channelsService: {joinableChannels, userChannels, activeChannel}
         } = this.props;
 
         return (

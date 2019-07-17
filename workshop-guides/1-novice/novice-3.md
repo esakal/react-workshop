@@ -45,15 +45,15 @@ src
 - [ ] feel free to remove those not that sofisticated class names, they did their part and not needed anymore.
 - [ ] add state `value: string` to `MessageCreate`.
 - [ ] add `onChange` react event to the `input` component.
-- [ ] add a method to handle that event, when called it should update the value of the stage. Use [the article](https://reactjs.org/docs/forms.html) as a reference.
+- [ ] add a method to handle that event, when called it should update the value of the state. Use [the article](https://reactjs.org/docs/forms.html) as a reference.
 - [ ] add second event `onKeyUp` and a matching method to handle it. use event args `e.which === 13` to detect pressing `enter` and write the value to console.
 
 ### Ticket Novice-3.3 (lifting state up)
 > You can continue your work or checkout and continue with branch [novice-3.3](https://github.com/esakal/react-workshop/tree/novice-3.3)
 
 - [ ] move `value` from `MessageCreate` state into `App` state
-- [ ] extend `MessageCreate` props with `onChange` `onSend` events
-- [ ] adjust code so a user can type value and print it to console when pressing enter.
+- [ ] extend `MessageCreate` props, add `onChange` and `onSend` events
+- [ ] adjust code so a user can type value and print it to console when pressing enter. It should behave the same while the value should be managed in `App` component.
 - [ ] instead of writing to console use `ChatkitService` method `sendMessage` to send the message to the server. Ask for the roomId from the presenter.
 - [ ] expose *optional* `disabled` prop in `MessageCreate` that if set disable user typing. default to not disabled.
 - [ ] add 'swear filter' that replaces any of the following words ('[badass](https://www.urbandictionary.com/define.php?term=Badass)', 'sexy', 'motherfucker') with 'nice guy'

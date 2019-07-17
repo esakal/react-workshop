@@ -74,7 +74,7 @@ export class App extends Component<AppProps, AppState> {
     }
 
     _printBookmarks = () => {
-        console.log(`bookmarks of owner id type ${this.state.bookmarks.ownerIdType}:`);
+        console.log(`bookmarks of owner id type '${this.state.bookmarks.ownerIdType}':`);
         this.state.bookmarks.list.forEach(bookmark =>{
             console.log(`${bookmark.id} ${bookmark.value}`);
         });

@@ -56,3 +56,11 @@ This workshop is divided into small units and each unit is divided into tasks.
 
 ## Presenter notes
 I will hopefully add soon my presenter notes to the repo. Those are my personal notes and as such are not formalized as other materials introduced in this workshop 
+
+### Things to improve
+- Once the participants started to chat in rooms, they needed to scroll manually to see new messages. I think it would be wise to add auto scroll of channel in branch [workshop-application](https://github.com/esakal/react-workshop/tree/workshop-application).
+- consider adding usage of classnames to one of the tasks and discuss about
+	- `<div className={classnames(className)} />` where className is `undefined`
+	- `<div className={classnames(className, {'global-css-name': condition)} />`
+	- `<div className={classnames(className, {[classes.localClassName]: condition)} />`  
+  

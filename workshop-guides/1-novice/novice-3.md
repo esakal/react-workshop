@@ -15,6 +15,8 @@ This unit covers practical use-cases with components. Let's start playing with R
 - [ ] if connection failed, replace loading with message `Failed to connect...`
 - [ ] if connected, replace loading message with `Hello {your name}!`
 
+**Troubleshooting**: If your IDE complains about unknown import of .css files, add `declare module '*.css';` in file `react-app-env.d.ts`
+
 Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/3)
 
 ### Ticket Novice-3.1 (create component)
@@ -50,6 +52,7 @@ Once completed, you can review the suggested solution [here](https://github.com/
 - [ ] add state `value: string` to `MessageCreate`.
 - [ ] add `onChange` react event to the `input` component.
 - [ ] add a method to handle that event, when called it should update the value of the state. Use [the article](https://reactjs.org/docs/forms.html) as a reference.
+  - **tip**: any method used to handle events should be created as arrow functions otherwise you might have issues with `this`. instead of `handleChange() {}` do `handleChange = () => {}`.
 - [ ] add second event `onKeyUp` and a matching method to handle it. use event args `e.which === 13` to detect pressing `enter` and write the value to console.
 
 Once completed, you can review the suggested solution [here](https://github.com/esakal/react-workshop/pull/5)

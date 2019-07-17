@@ -9,7 +9,8 @@ Enjoy!
 > NOTICE: before you start working, please checkout  [novice-3](https://github.com/esakal/react-workshop/tree/novice-3) and use it to develop this epic tasks
 
 ### Ticket Novice-3 (conditional rendering)
-- [ ] setup `.env` file to include api keys of `pusher - chatkit` provided by presenter.
+- [ ] create file `.env` based on content of `.env.template`, ask the keys from the presenter..
+  - **NOTICE** everytime you change a value in `.env` file you must run again `npm run serve`.
 - [ ] in `app.tsx` - upon mounting 
   - [ ] show `Loading...` message when mounting 
   - [ ] connect to ChatKit using `./src/chatkit-service.ts` class `ChatkitService` method `connect`
@@ -35,6 +36,7 @@ src
 	<input />
 </>
 ```
+- [ ] in `index.ts` add `export * from './message-create.tsx'`.
 - [ ] show `MessageCreate` component in `app.tsx` only if user is connected
 - [ ] use the `caption` class name in `MessageCreate` to change the div style to `font-size: 12px; background: purple;`
 
@@ -56,7 +58,8 @@ src
 	- `onChange` is a 'proxy event' and should have the same signature of the originator. In our case `(e: any) => void`. 
 	- `onSend` abstract the logic of `onKeyUp` and can expose a more relevant signature `() => void`
 - [ ] adjust code so a user can type value and print it to console when pressing enter. It should behave the same while the value should be managed in `App` component.
-- [ ] instead of writing to console use `ChatkitService` method `sendMessage` to send the message to the server. Ask for the roomId from the presenter.
+- [ ] instead of writing to console use `ChatkitService` method `sendMessage` to send the message to the server. Ask for the roomId from the presenter and add that value to `.env` file with key `REACT_APP_CHATKIT_TEST_ROOM_ID` 
+  - **NOTICE** everytime you change a value in `.env` file you must run again `npm run serve`.
 - [ ] expose *optional* `disabled` prop in `MessageCreate` that if set disable user typing. default to not disabled.
 - [ ] add 'swear filter' that replaces any of the following words ('[badass](https://www.urbandictionary.com/define.php?term=Badass)', 'sexy', 'motherfucker') with 'nice guy'
 - [ ] add 'antisocial filter' that disable the input if the user types the phrase 'coffee break' [useful link](https://www.slashgear.com/how-many-daily-cups-of-coffee-are-safe-study-offers-surprising-answer-10576199/)

@@ -76,16 +76,16 @@ This ticket provides less guidance to level up the challange. Ping me if you nee
 - [ ] extends `App` state with 
 ```
 bookmarks: {
-            lists: {id: string, value: string}[],
-            ownerId: string
+            list: {id: string, value: string}[],
+            ownerIdType: string
      }
 ```
-- [ ] upon mounting - update ownerId with  
-- [ ] when user types `show bookmarks` - print all boomkarks to console
-- [ ] when user types `add bookmark {something somthing}!` - add new bookmark. generate id using npm librari `short` library. don't forget to add types as well by consuming `@types/shortid`
+- [ ] upon mounting - set value of ownerIdType to string `User`  
+- [ ] when user types `show bookmarks` - print all bookmarks to console with title `showing bookmarks for '${this.state.ownerIdType}'`.
+- [ ] when user types `add bookmark {something somthing}!` - add new bookmark. generate id using npm librari `short` library. don't forget to add types as well by consuming `@types/shortid` (into devDependencies)
 - [ ] make sure adding to array doesn't delete value of `ownerId` without re-setting is manually. Search for the functional programming technique **without** adding 3rd party libraries
 - [ ] when user types `remove bookmark XXX!` - remove bookmark with id XXX if exists and print to console new bookmarks
-- [ ] when use types `modify`
+- [ ] when use types `modify bookmark {id} {new value}!` - modify value if id exists
 
 
 ## Epic Highlights  

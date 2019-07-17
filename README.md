@@ -54,3 +54,5 @@ This workshop is divided into small units and each unit is divided into tasks.
 - **Unit 'Intermediate-2' ([link to unit instructions](./workshop-guides/2-intermediate/intermediate-2.md))**: This unit deals with techniques to break any application into components using flexbox as our layout system.
 
 
+## Presenter notes
+I will hopefully add soon my presenter notes to the repo. Those are my personal notes and as such are not formalized as other materials introduced in this workshop 

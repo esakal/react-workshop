@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.channelSectionTitle {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.itemText {
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.itemButton {
+    background: transparent;
+    height: 28px;
+    padding: 2px;
+    display: flex;
+    width: 100%;
+}
+
+.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.itemButton:hover {
+        background-color: rgb(69, 120, 191);
+}
+
+.channels {
+    flex: 1;
+    overflow: auto;
+}
+
+.refreshButton {
+    line-height: 20;
+    vertical-align: middle;
+    margin-left: 10px;
+}

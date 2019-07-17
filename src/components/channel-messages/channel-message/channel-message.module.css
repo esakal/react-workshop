@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.container:hover {
+    background-color: rgba(69, 120, 191, 0.05);
+}
+
+.header {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.senderName {
+
+}
+
+.messageTimestamp {
+    opacity: 0.6;
+    margin-left: 5px;
+    line-height: 18px;
+    font-size: 12px;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5px;
+
+}
+
+.message {
+    background: rgba(61, 60, 64, 0.05);
+    width: 100%;
+    padding: 5px;
+}
+
+.delete {
+    color: red;
+    line-height: 18px;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.grow {
+    flex: 1;
+}

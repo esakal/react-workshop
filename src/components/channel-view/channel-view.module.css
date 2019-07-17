@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.messageCreate {
+    width: 100%;
+    height: 46px;
+}
+
+.channelHeader {
+    width: 100%;
+    height: 63px;
+    border-bottom: 1px solid rgba(61, 60, 64, 0.2);
+}
+
+.content {
+    flex: 1;
+    overflow:auto;
+    width: 100%;
+}
+
+.emptyContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyText {
+    margin-top:20px;
+    color: rgba(69, 120, 191, 0.5);
+    font-size: 30px;
+
+}
+
+.emptyImage {
+    width: 300px;
+}

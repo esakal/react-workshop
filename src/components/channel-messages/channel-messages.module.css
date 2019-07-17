@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: white;
+    width: 100%;
+    padding: 10px;
+}
+
+.dateSeperator {
+    height: 2em;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+}
+
+.dateSeperatorHR {
+    border-color: rgba(61, 60, 64, 0.2);
+    margin: 0;
+    position: relative;
+    top: 1em;
+    z-index: 5;
+}
+
+.dateSeperatorText {
+    background: rgb(255, 255, 255);
+    color: rgb(61, 60, 64);
+    border-radius: 50px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 2em;
+    padding: 0 1em;
+    position: relative;
+    z-index: 5;
+}

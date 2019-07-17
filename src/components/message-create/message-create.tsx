@@ -16,9 +16,9 @@ export class MessageCreate extends Component<MessageCreateProps, MessageCreateSt
 	}
 
 	handleChange = (e: any) => {
-		// this.setState({
-		// 	value: e.target.value
-		// });
+		this.setState({
+			value: e.target.value
+		});
 	}
 
 	handleKeyDown = (e: any) => {

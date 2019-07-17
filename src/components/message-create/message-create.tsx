@@ -22,10 +22,16 @@ export class MessageCreate extends Component<MessageCreateProps, MessageCreateSt
 	}
 
 	busyToken: any = null;
+	saySorryToken: any = null;
 
 	state = {};
 
 	componentWillUnmount(): void {
+		if (this.saySorryToken) {
+			clearTimeout(this.saySorryToken);
+			this.saySorryToken = null;
+		}
+
 		if (!this.busyToken) {
 			return;
 		}
@@ -37,12 +43,26 @@ export class MessageCreate extends Component<MessageCreateProps, MessageCreateSt
 		const { onSaySorry } = this.props;
 
 		if (prevProps.disabled !== this.props.disabled) {
-			setTimeout(() => {
+			if (this.saySorryToken) {
+				clearTimeout(this.saySorryToken);
+				this.saySorryToken = null;
+			}
+
+			if (!this.props.disabled) {
+				return;
+			}
+
+			this.saySorryToken = setTimeout(() => {
+				this.saySorryToken = null;
 				onSaySorry && onSaySorry()
 			}, 2000);
 		}
 
 		if (prevProps.value != this.props.value && this.props.value === PretendToBeBusy) {
+			if (this.busyToken) {
+				return;
+			}
+
 			this.busyToken = setInterval(() => {
 				console.warn(`Sorry, I'm very busy...`);
 			}, 1000);

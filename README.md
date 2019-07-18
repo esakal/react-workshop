@@ -53,13 +53,15 @@ This workshop is divided into small units and each unit is divided into tasks.
 - **Unit 'Intermediate-2' ([link to unit instructions](./workshop-guides/2-intermediate/intermediate-2.md))**: This unit deals with techniques to break any application into components using flexbox as our layout system.
 
 
-## Trainer notes
-If you want to find reasoning for each task, see my [personal notes](./workshop-guides/trainer)
-
-### Things to improve
+## Things to improve
 - Once the participants started to chat in rooms, they needed to scroll manually to see new messages. I think it would be wise to add auto scroll of channel in branch [workshop-application](https://github.com/esakal/react-workshop/tree/workshop-application).
 - consider adding usage of classnames to one of the tasks and discuss about
 	- `<div className={classnames(className)} />` where className is `undefined`
 	- `<div className={classnames(className, {'global-css-name': condition)} />`
 	- `<div className={classnames(className, {[classes.localClassName]: condition)} />`  
+	
+## Trainer notes
+If you want to find reasoning for each task, see my [personal notes](./workshop-guides/trainer).
+
+
   

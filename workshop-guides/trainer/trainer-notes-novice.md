@@ -1,9 +1,10 @@
 # Trainer Notes - Novice Unit
-This document contains personal notes about the `Novice` unit.
+This document contains personal notes about the `Novice` unit. 
 
 > Please make sure you read first [the trainer introduction](./readme.md).
 
-# Novice-1: scaffold a project using CRA
+# Novice-1
+> scaffold a project using CRA
 
 ## Task novice-1
 
@@ -60,7 +61,8 @@ This document contains personal notes about the `Novice` unit.
 	 
 ---
 
-# Novice-2: architecture and product requirements for the workshop application
+# Novice-2
+> Architecture and product requirements for the workshop application
 
 ## Task novice-2
 
@@ -74,7 +76,8 @@ not relevant for this unit
 - **demo:** run the application in two machines with two different users and demonstrate the workshop application
 - review together the planned architecture in [novice-2 unit](../1-novice/novice-2.md)
 
-# Novice-3: components, states, data flow, life cycle and more.
+# Novice-3
+> components, states, data flow, life cycle and more.
 
 ## Task novice-3
 

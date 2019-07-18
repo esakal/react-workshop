@@ -1,10 +1,13 @@
 # Trainer Notes - Introduction
+Those are my personal notes and as such are not formalized as other materials introduced in this workshop 
+
 
 # Expected participant profile
 This workshop was created for intermediate level. Participants need to have some knowledge about React otherwise they will not be able to catch up with the workshop.  
 
 - Experience with javascript (typescript is not mandatory)
-- 
+- Experience with React 
+
 
 # How to prepare to the workshop
 1. go over to [repository readme.md](../../readme.md) file and complete `Setup the workshop application` section
@@ -44,3 +47,6 @@ Some final words about the workshop. It is going to be written in typescript, we
 	- follow the repo instruction and make sure you see their application 
 3. **Recommended**: [review their documentation](https://reactjs.org/docs/hello-world.html). Relevant sections 1 - 12 (as much as you can/want/understand)
 4. **recommended**: as we are going to use flexbox to layout the application, it is recommended to read [this useful cheatsheet](https://css-tricks.com/snippets/css/a-guide-to-flexbox)
+
+See you all,
+Eran.

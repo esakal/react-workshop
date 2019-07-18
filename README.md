@@ -54,7 +54,7 @@ This workshop is divided into small units and each unit is divided into tasks.
 
 
 ## Trainer notes
-I will hopefully add soon my trainer notes to the repo. Those are my personal notes and as such are not formalized as other materials introduced in this workshop 
+If you want to find reasoning for each task, see my [personal notes](./workshop-guides/trainer)
 
 ### Things to improve
 - Once the participants started to chat in rooms, they needed to scroll manually to see new messages. I think it would be wise to add auto scroll of channel in branch [workshop-application](https://github.com/esakal/react-workshop/tree/workshop-application).

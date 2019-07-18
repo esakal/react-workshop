@@ -22,7 +22,6 @@ npm install
   - NOTE that everytime you change values in `.env` file you must run `serve` again, they are not being tracked by CRA.
 7. open the `console` section in pusher dashboard and create new room.
 7. go over to users and add new user with your github user id. make sure that user is joined to the room you created.
-8. add all the workshop participant github user id (not email) as users to chatkit, make sure that user is joined to the room you created (you can skip it for now and do it later)
 9. run the application `npm run serve`, navigate to `http://localhost:3000` to open the application.
 
 That's it, you are ready to guide the workshop.
@@ -33,11 +32,11 @@ This workshop was created as a preparation to a course about React hooks, state 
 This workshop is divided into small units and each unit is divided into tasks. 
 
 1. Participant complete a task based on a checklist of requirements.
-2. Before continuing to next task, the presenter perform a joined session to review the suggested solution, provide insights and reasoning about the implementation and answer questions.
+2. Before continuing to next task, the trainer perform a joined session to review the suggested solution, provide insights and reasoning about the implementation and answer questions.
 2. Each task changes can be viewed in a dedicated pull request to simplify tracking changes and code implementation.
 3. Under each unit the tasks are related so the participant can decide if he wants to continue with his code or checkout a prepared branch if his code is incomplete.
 
-> Although anyone can follow the unit guides and complete this workshop, it was build based on the assumption that after each task the presenter will provide insights and reasoning about the implementation. 
+> Although anyone can follow the unit guides and complete this workshop, it was build based on the assumption that after each task the trainer will provide insights and reasoning about the implementation. 
 
 # Agenda
 
@@ -54,8 +53,8 @@ This workshop is divided into small units and each unit is divided into tasks.
 - **Unit 'Intermediate-2' ([link to unit instructions](./workshop-guides/2-intermediate/intermediate-2.md))**: This unit deals with techniques to break any application into components using flexbox as our layout system.
 
 
-## Presenter notes
-I will hopefully add soon my presenter notes to the repo. Those are my personal notes and as such are not formalized as other materials introduced in this workshop 
+## Trainer notes
+I will hopefully add soon my trainer notes to the repo. Those are my personal notes and as such are not formalized as other materials introduced in this workshop 
 
 ### Things to improve
 - Once the participants started to chat in rooms, they needed to scroll manually to see new messages. I think it would be wise to add auto scroll of channel in branch [workshop-application](https://github.com/esakal/react-workshop/tree/workshop-application).

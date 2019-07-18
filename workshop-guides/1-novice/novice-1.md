@@ -6,10 +6,11 @@ This unit covers creation of project using [Create React App project](https://gi
 ## Unit Tickets
 
 ### Ticket Novice-1 (scaffold a project using CRA)
-- [ ] create a new react application. choose `npm` as dependency manager and `typescript` as project language
+- [ ] **Alternative 1:** create a new react application. choose `npm` as dependency manager and `typescript` as project language
 ```
 npx create-react-app my-app --typescript —use-npm
 ```
+- [ ]  **Alternative 2:** clone this repository and checkout branch `novice-1`.
 - [ ] run the project and make sure it works
 - [ ] replace the logo implementation with [svg as component](https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files#adding-svgs)
 
@@ -26,7 +27,6 @@ Once completed, you can review the suggested solution [here](https://github.com/
 - [ ] in `public/manifest.json`, either update 'name' or remove that file and update `public/index.html` accordingly
 - [ ] remove all sample files under `src`, leave only `index.*`, `app.*` and `react-app-env.d.ts` (this list might vary between CRA versions).
 - [ ] in `index.tsx` remove code related to `service worker` unless you plan to actually use it.
-- [ ] in `tsconfig.json` set property `isolatedModules` to `false`
 - [ ] in `index.css` add the following to `body`
 ```
 height: 100vh;

@@ -11,7 +11,7 @@ This unit cover some more advanced techniques
 > NOTICE: before you start working, please checkout branch [intermediate-2](https://github.com/esakal/react-workshop/tree/intermediate-2) and use it to develop this unit tasks
 
 ### Ticket Intermediate-2 (introduce channels context)
-> This task is not personal and should be completed together during a joined session with the presenter.
+> This task is not personal and should be completed together during a joined session with the trainer.
 
 - [x] review together changes done in plop templates and in many app components to consume channels context
 

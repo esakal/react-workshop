@@ -14,12 +14,25 @@ export interface ChannelHeaderProps {
 }
 
 export interface ChannelHeaderState {
+    isHovering: boolean
 }
 
 export const ChannelHeader = withChannelsService(class extends Component<ChannelHeaderProps, ChannelHeaderState> {
 
     state: ChannelHeaderState = {
+        isHovering: false,
     }
+
+    handleMouseHover(value: boolean) {
+        this.setState({
+            isHovering: value
+        });
+    }
+
+    editName = () => {
+
+    }
+
 
     render() {
         const {
@@ -29,13 +42,22 @@ export const ChannelHeader = withChannelsService(class extends Component<Channel
             }
         } = this.props;
 
+        const {
+            isHovering
+        } = this.state;
+
         return (
             <div className={classnames(className, classes.container)}>
-                <Toolbar className={classes.toolbar}>
-                    <button className={classes.channelName}>
-                        Channel name
-                        <EditIcon className={classes.editButton} fontSize="inherit"></EditIcon>
-                </button>
+                {activeChannel && <Toolbar className={classes.toolbar}>
+                    <button className={classes.channelName}
+                         onMouseEnter={() => this.handleMouseHover(true)}
+                         onClick={this.editName}
+                         onMouseLeave={() => this.handleMouseHover(false)}>
+                        {activeChannel.name}
+                        {isHovering &&
+                            <EditIcon className={classes.editButton} fontSize="inherit"></EditIcon>
+                        }
+                    </button>
                     <div className={classes.grow}/>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -52,6 +74,7 @@ export const ChannelHeader = withChannelsService(class extends Component<Channel
                     </div>
 
                 </Toolbar>
+                }
             </div>
         );
     }

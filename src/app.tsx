@@ -19,6 +19,7 @@ export interface AppState {
 const ForbiddenWord = 'coffee break';
 const LanguageFilterWords = ['badass', 'sexy', 'motherfucker'];
 const SafeWord = 'nice guy';
+const DisconnectWord = 'lo tzarich tovot';
 
 export class App extends Component<AppProps, AppState> {
     private chatkitService: ChatkitService = new ChatkitService();
@@ -62,6 +63,12 @@ export class App extends Component<AppProps, AppState> {
     handleChange = (e: any) => {
         const message = e.target.value;
 
+        if (message === DisconnectWord) {
+            this.setState({
+                connected: false
+            });
+            return;
+        }
 
         if (message.indexOf(ForbiddenWord) !== -1) {
             this.setState({
@@ -85,6 +92,13 @@ export class App extends Component<AppProps, AppState> {
         });
     }
 
+    handleSaySorry = () => {
+        this.setState({
+            banUser: false,
+            message: 'Ok, I forgive you...'
+        })
+    }
+
 
     render() {
         const {loading, error, fullName, banUser, connected, message} = this.state;
@@ -95,7 +109,7 @@ export class App extends Component<AppProps, AppState> {
                 {error && <div>Failed to connect...</div>}
                 { connected && <>
                     {fullName && <div>Hello {fullName}</div>}
-                    <MessageCreate disabled={banUser} value={message} onSend={this.handleMessageSend} onChange={this.handleChange} />
+                    <MessageCreate onSaySorry={this.handleSaySorry} disabled={banUser} value={message} onSend={this.handleMessageSend} onChange={this.handleChange} />
                 </>}
 
             </div>

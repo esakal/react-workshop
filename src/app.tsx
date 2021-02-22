@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { ChatkitService } from './chatkit-service';
 import './app.css';
+import { MessageCreate } from './components/message-create';
 
 export interface AppProps {
 
@@ -10,6 +11,7 @@ export interface AppState {
     loading: boolean;
     error: boolean;
     fullName: string;
+    connected: boolean;
 }
 
 export class App extends Component<AppProps, AppState> {
@@ -18,7 +20,8 @@ export class App extends Component<AppProps, AppState> {
     state: AppState = {
         loading: true,
         error: false,
-        fullName: ''
+        fullName: '',
+        connected: false
     }
 
     componentDidMount(): void {
@@ -27,6 +30,7 @@ export class App extends Component<AppProps, AppState> {
                 this.setState({
                     fullName: result.user.name,
                     loading: false,
+                    connected: true
                 });
             })
             .catch((error) => {
@@ -38,13 +42,17 @@ export class App extends Component<AppProps, AppState> {
     }
 
     render() {
-        const {loading, error, fullName} = this.state;
+        const {loading, error, fullName, connected} = this.state;
         return (
             <div>
 	            <div className={'caption'}>Chat Application</div> {/* Notice - please untouch this line */}
 	            {loading && <div>Loading...</div>}
                 {error && <div>Failed to connect...</div>}
-                {fullName && <div>Hello {fullName}</div>}
+                { connected && <>
+                    {fullName && <div>Hello {fullName}</div>}
+                    <MessageCreate />
+                </>}
+
             </div>
         );
     }
